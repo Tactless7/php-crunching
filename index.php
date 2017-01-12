@@ -19,6 +19,17 @@
 		}
 		return $count;
 	}
+
+	function ifLastLetter($array, $string){
+		foreach ($array as  $value) {
+			$lastLetter = substr($value, -1);
+			if($lastLetter === $string){
+				var_dump($value);
+				$count++;
+			}
+		}
+		return $count;
+	}
  ?><!DOCTYPE html>
  <html lang="en">
  <head>
@@ -31,7 +42,8 @@
  	<div>Ce dictionnaire contient <?= count($dico)?> mots</div>
  	<div>Il y a <?= charNumber($dico) ?> mots qui font 15 caractères</div>
  	<div>Il y a <?= ifLetter($dico, 'w') ?> mots qui contiennent la lettre w</div>
- 	<div>Il y a <?= ifLetter($dico, 'q') ?> mots qui contiennent la lettre q</div>
+ 	<div>Il y a <?= ifLastLetter($dico, 'q') ?> mots qui se terminent par la lettre q</div>
+
  	
  </body>
  </html>
