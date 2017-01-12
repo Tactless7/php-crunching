@@ -24,4 +24,14 @@
 			}
 		}
 	}
+
+	function filmsBeforeDate($array, $year){
+		foreach ($array as $value) {
+			$releaseYear = substr($value['im:release']['label'], 0, 4);
+			if($releaseYear < $year){
+				$count++;
+			}
+		}
+		return $count;
+	}
  ?>
