@@ -27,11 +27,23 @@
 
 	function filmsBeforeDate($array, $year){
 		foreach ($array as $value) {
-			$releaseYear = substr($value['im:release']['label'], 0, 4);
+			$releaseYear = substr($value['im:releaseDate']['label'], 0, 4);
 			if($releaseYear < $year){
 				$count++;
 			}
 		}
 		return $count;
 	}
+
+	// function mostRecentMovie($array){
+	// 	$mostRecentYear = 0;
+	// 	foreach ($array as $value) {
+	// 		$releaseYear = substr($value['im:release']['label'], 0, 4);
+	// 		var_dump($releaseYear);
+	// 		if($releaseYear > $mostRecentYear){
+	// 			$mostRecent = $value['im:name']['label'];
+	// 		}
+	// 	}
+	// 	return $mostRecent;
+	// }
  ?>
