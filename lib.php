@@ -61,4 +61,25 @@
 		}
 		return $older;
 	}
+
+	function biggestCategory($array){
+		$categories = [];
+		foreach ($array as $value) {
+			$currentCategory = $value['category']['attributes']['label'];
+			if($categories[$currentCategory]){
+				$categories[$currentCategory]++;
+			} else {
+				$categories[$currentCategory] = 1;
+			}
+		}
+		$biggestCategory;
+		$biggestCategoryValue = 0;
+		foreach ($categories as $key => $value) {
+			if($value > $biggestCategoryValue){
+				$biggestCategoryValue = $value;
+				$biggestCategory = $key;
+			}
+		}
+		return $biggestCategory;
+	}
  ?>
