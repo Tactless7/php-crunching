@@ -11,7 +11,14 @@
 		return $count;
 	}
 
-	
+	function ifLetter($array, $string){
+		foreach ($array as $value) {
+			if(strpos($value, $string)){
+				$count++;
+			}
+		}
+		return $count;
+	}
  ?><!DOCTYPE html>
  <html lang="en">
  <head>
@@ -23,8 +30,8 @@
  	<h1>Exercices Dictionnaire</h1>
  	<div>Ce dictionnaire contient <?= count($dico)?> mots</div>
  	<div>Il y a <?= charNumber($dico) ?> mots qui font 15 caractères</div>
- 	<div>Il y a  mots qui contiennent la lettre w</div>
- 	<div>Il y a  mots qui contiennent la lettre q</div>
+ 	<div>Il y a <?= ifLetter($dico, 'w') ?> mots qui contiennent la lettre w</div>
+ 	<div>Il y a <?= ifLetter($dico, 'q') ?> mots qui contiennent la lettre q</div>
  	
  </body>
  </html>
