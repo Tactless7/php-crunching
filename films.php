@@ -9,6 +9,7 @@
  	<h1>Exercices Films</h1>
  	<div>
  		<h2>Top 10 des films</h2>
+ 		<ol><?php topTen($top) ?></ol>
  	</div>
  	<div>Classement du film Gravity : </div>
  	<div>Réalisateur de The Lego Movie</div>
