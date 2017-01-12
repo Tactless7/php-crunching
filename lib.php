@@ -8,4 +8,20 @@
 			echo '<li>'. $array[$i]['im:name']['label'] .'</li>';
 		}
 	}
+
+	function searchPosition($array, $title){
+		for($i = 0 ; $i < count($array) ; $i++){
+			if($array[$i]['im:name']['label'] === $title){
+				return $i + 1; //Index commençant à 0
+			}
+		}
+	}
+
+	function getDirector($array, $title){
+		foreach ($array as $value) {
+			if($value['im:name']['label'] === $title){
+				return $value['im:artist']['label'];
+			}
+		}
+	}
  ?>

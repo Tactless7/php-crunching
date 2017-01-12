@@ -11,8 +11,8 @@
  		<h2>Top 10 des films</h2>
  		<ol><?php topTen($top) ?></ol>
  	</div>
- 	<div>Classement du film Gravity : </div>
- 	<div>Réalisateur de The Lego Movie</div>
+ 	<div>Classement du film Gravity : <?= searchPosition($top, 'Gravity') ?>ème</div>
+ 	<div>Réalisateur de The Lego Movie : <?= getDirector($top, 'The LEGO Movie') ?></div>
  	<div>Nombre de films sortis avant 2000 : </div>
  	<div>Film le plus récent : </div>
  	<div>Film le plus vieux : </div>
