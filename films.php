@@ -17,7 +17,7 @@
  	<div>Film le plus récent : <?= mostRecentMovie($top); ?></div>
  	<div>Film le plus vieux : <?= olderMovie($top) ?> </div>
  	<div>Catégorie de film la plus représentée : <?= biggestCategory($top) ?></div>
- 	<div>Réalisateur le plus présent dans le top 100</div>
+ 	<div>Réalisateur le plus présent dans le top 100 : <?= mostFrequentDirector($top) ?></div>
  	<div>Prix d'achat du Top 10 sur itunes : </div>
  	<div>Prix de location du Top 10 sur itunes : </div>
  	<div>Mois avec le plus de sorties au cinémat : </div>

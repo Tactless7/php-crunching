@@ -82,4 +82,26 @@
 		}
 		return $biggestCategory;
 	}
+
+	function mostFrequentDirector($array){
+		$directors = [];
+		foreach ($array as $value) {
+			$currentDirector = $value['im:artist']['label'];
+			if($directors[$currentDirector]){
+				$directors[$currentDirector]++;
+			} else {
+				$directors[$currentDirector] = 1;
+			}
+		}
+		$mostFrequentDirector;
+		$mostFrequentDirectorValue = 0;
+		foreach ($directors as $key => $value) {
+			if($value > $mostFrequentDirectorValue){
+				$mostFrequentDirectorValue = $value;
+				$mostFrequentDirector = $key;
+			}
+		}
+		return $mostFrequentDirector;
+	}
+
  ?>
