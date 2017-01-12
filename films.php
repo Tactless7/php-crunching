@@ -19,7 +19,7 @@
  	<div>Catégorie de film la plus représentée : <?= biggestCategory($top) ?></div>
  	<div>Réalisateur le plus présent dans le top 100 : <?= mostFrequentDirector($top) ?></div>
  	<div>Prix d'achat du Top 10 sur itunes : <?= buyingPriceSum($top) ?> USD</div>
- 	<div>Prix de location du Top 10 sur itunes : </div>
+ 	<div>Prix de location du Top 10 sur itunes : <?= rentalPriceSum($top) ?> USD (4 films impossibles à louer)</div>
  	<div>Mois avec le plus de sorties au cinémat : </div>
  	<div>Les 1à meilleurs films à voir avec un petit budget : </div>
 

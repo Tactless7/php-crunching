@@ -113,4 +113,13 @@
 		return $total;
 	}
 
+	function rentalPriceSum($array){
+		$total = 0;
+		for($i = 0 ; $i < 10 ; $i++){
+			$rentalPrice = $array[$i]['im:rentalPrice']['attributes']['amount'];
+			$total += $rentalPrice;
+		}
+		return $total;
+	}
+
  ?>
