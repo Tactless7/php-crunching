@@ -26,6 +26,7 @@
 	}
 
 	function filmsBeforeDate($array, $year){
+		$count = 0;
 		foreach ($array as $value) {
 			$releaseYear = substr($value['im:releaseDate']['label'], 0, 4);
 			if($releaseYear < $year){
@@ -35,15 +36,29 @@
 		return $count;
 	}
 
-	// function mostRecentMovie($array){
-	// 	$mostRecentYear = 0;
-	// 	foreach ($array as $value) {
-	// 		$releaseYear = substr($value['im:release']['label'], 0, 4);
-	// 		var_dump($releaseYear);
-	// 		if($releaseYear > $mostRecentYear){
-	// 			$mostRecent = $value['im:name']['label'];
-	// 		}
-	// 	}
-	// 	return $mostRecent;
-	// }
+	function mostRecentMovie($array){
+		$mostRecentDate = 0;
+		foreach ($array as $value) {
+			$releaseDate = substr($value['im:releaseDate']['label'], 0, 10);
+			$releaseDate = str_replace('-', '', $releaseDate); 
+			if($releaseDate > $mostRecentDate){
+				$mostRecentDate = $releaseDate;
+				$mostRecent = $value['im:name']['label'];
+			}
+		}
+		return $mostRecent;
+	}
+
+	function olderMovie($array){
+		$olderDate = 30000101;
+		foreach ($array as $value) {
+			$releaseDate = substr($value['im:releaseDate']['label'], 0, 10);
+			$releaseDate = str_replace('-', '', $releaseDate); 
+			if($releaseDate < $olderDate){
+				$olderDate = $releaseDate;
+				$older = $value['im:name']['label'];
+			}
+		}
+		return $older;
+	}
  ?>

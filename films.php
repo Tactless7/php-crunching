@@ -14,8 +14,8 @@
  	<div>Classement du film Gravity : <?= searchPosition($top, 'Gravity') ?>ème</div>
  	<div>Réalisateur de The Lego Movie : <?= getDirector($top, 'The LEGO Movie') ?></div>
  	<div>Nombre de films sortis avant 2000 : <?= filmsBeforeDate($top, 2000) ?></div>
- 	<div>Film le plus récent : </div>
- 	<div>Film le plus vieux : </div>
+ 	<div>Film le plus récent : <?= mostRecentMovie($top); ?></div>
+ 	<div>Film le plus vieux : <?= olderMovie($top) ?> </div>
  	<div>Catégorie de film la plus représentée : </div>
  	<div>Réalisateur le plus présent dans le top 100</div>
  	<div>Prix d'achat du Top 10 sur itunes : </div>
