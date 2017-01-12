@@ -122,4 +122,25 @@
 		return $total;
 	}
 
+	function mostMoviesMonth($array){
+		$months = [];
+		foreach ($array as $value) {
+			$currentMonth = substr($value['im:releaseDate']['label'], 5, 2);
+			if($months[$currentMonth]){
+				$months[$currentMonth]++;
+			} else {
+				$months[$currentMonth] = 1;
+			}
+		}
+		$mostFrequentMonth;
+		$mostFrequentMonthValue = 0;
+		foreach ($months as $key => $value) {
+			if($value > $mostFrequentMonthValue){
+				$mostFrequentMonthValue = $value;
+				$mostFrequentMonth = $key;
+			}
+		}
+		return $mostFrequentMonth;
+	}
+
  ?>
