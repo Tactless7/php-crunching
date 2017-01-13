@@ -62,7 +62,7 @@
 		return $older;
 	}
 
-	function biggestCategory($array){
+	function biggestCategory($array){ //A refactoriser
 		$categories = [];
 		foreach ($array as $value) {
 			$currentCategory = $value['category']['attributes']['label'];
@@ -83,7 +83,7 @@
 		return $biggestCategory;
 	}
 
-	function mostFrequentDirector($array){
+	function mostFrequentDirector($array){ //A refactoriser
 		$directors = [];
 		foreach ($array as $value) {
 			$currentDirector = $value['im:artist']['label'];
@@ -143,21 +143,43 @@
 		return $mostFrequentMonth;
 	}
 
+	function helpSort($a, $b){
+		if($a['price'] === $b['price']){
+			return ($a['position'] < $b['position']) ? -1 : 1;
+		} else {
+			return ($a['price'] < $b['price']) ? -1 : 1;
+		}
+	}
+
+	function replaceMostExpensive($array, $elementName, $elementPrice, $elementPos){
+		if($elementPrice < end($array)['price']){
+			return true;
+		} 
+		else if($elementPrice === end($array)['price'] && $elementPos < end($array)['position']){
+			return true;
+		}
+		return false;
+	}
+
 	function cheaperMovies($array){
-		$limitedArray = [];
+		$topCheapest = [];
 		foreach ($array as $key => $value) {
 			$name = $array[$key]['im:name']['label'];
-			$limitedArray[$name] = Array() floatval($value['im:price']['attributes']['amount']);
+			$price = floatval($value['im:price']['attributes']['amount']);
+			$position = $key;
+
+			if(count($topCheapest) < 10){
+				$topCheapest[$name] = array('price' => $price, 'position' => $position);
+			} else {
+				uasort($topCheapest, 'helpSort');
+				if (replaceMostExpensive($topCheapest, $name, $price, $position)){
+					array_pop($topCheapest);
+					$topCheapest[$name] = array('price' => $price, 'position' => $position);
+				}
+			}
 		}
-		asort($limitedArray);
-		var_dump($limitedArray);
-		foreach ($limitedArray as $key => $value) {
-			if($key < 10){
-				echo '<li>'. $key .'</li>';
-			}
-			else {
-				return;
-			}
+		foreach($topCheapest as $key => $value) { 
+			echo '<li>'. $key .'</li>';
 		}
 	}
 
