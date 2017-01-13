@@ -122,19 +122,9 @@
 				$months[$currentMonth] = 1;
 			}
 		}
-		var_dump($months);
 		asort($months);
 		end($months);
 		return key($months);
-		// $mostFrequentMonth;
-		// $mostFrequentMonthValue = 0;
-		// foreach ($months as $key => $value) {
-		// 	if($value > $mostFrequentMonthValue){
-		// 		$mostFrequentMonthValue = $value;
-		// 		$mostFrequentMonth = $key;
-		// 	}
-		// }
-		// return $mostFrequentMonth;
 	}
 
 	function helpSort($a, $b){
