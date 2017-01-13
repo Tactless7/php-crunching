@@ -62,46 +62,34 @@
 		return $older;
 	}
 
-	function biggestCategory($array){ //A refactoriser
+	function biggestCategory($array){
 		$categories = [];
 		foreach ($array as $value) {
 			$currentCategory = $value['category']['attributes']['label'];
-			if($categories[$currentCategory]){
+			if(isset($categories[$currentCategory])){
 				$categories[$currentCategory]++;
 			} else {
 				$categories[$currentCategory] = 1;
 			}
 		}
-		$biggestCategory;
-		$biggestCategoryValue = 0;
-		foreach ($categories as $key => $value) {
-			if($value > $biggestCategoryValue){
-				$biggestCategoryValue = $value;
-				$biggestCategory = $key;
-			}
-		}
-		return $biggestCategory;
+		asort($categories);
+		end($categories);
+		return key($categories);
 	}
 
-	function mostFrequentDirector($array){ //A refactoriser
+	function mostFrequentDirector($array){
 		$directors = [];
 		foreach ($array as $value) {
 			$currentDirector = $value['im:artist']['label'];
-			if($directors[$currentDirector]){
+			if(isset($directors[$currentDirector])){
 				$directors[$currentDirector]++;
 			} else {
 				$directors[$currentDirector] = 1;
 			}
 		}
-		$mostFrequentDirector;
-		$mostFrequentDirectorValue = 0;
-		foreach ($directors as $key => $value) {
-			if($value > $mostFrequentDirectorValue){
-				$mostFrequentDirectorValue = $value;
-				$mostFrequentDirector = $key;
-			}
-		}
-		return $mostFrequentDirector;
+		asort($directors);
+		end($directors);
+		return key($directors);
 	}
 
 	function buyingPriceSum($array){
@@ -116,8 +104,10 @@
 	function rentalPriceSum($array){
 		$total = 0;
 		for($i = 0 ; $i < 10 ; $i++){
-			$rentalPrice = $array[$i]['im:rentalPrice']['attributes']['amount'];
-			$total += $rentalPrice;
+			if(isset($array[$i]['im:rentalPrice'])){
+				$rentalPrice = $array[$i]['im:rentalPrice']['attributes']['amount'];
+				$total += $rentalPrice;
+			}
 		}
 		return $total;
 	}
@@ -125,22 +115,26 @@
 	function mostMoviesMonth($array){
 		$months = [];
 		foreach ($array as $value) {
-			$currentMonth = substr($value['im:releaseDate']['label'], 5, 2);
-			if($months[$currentMonth]){
+			$currentMonth = intval(substr($value['im:releaseDate']['label'], 5, 2));
+			if(isset($months[$currentMonth])){
 				$months[$currentMonth]++;
 			} else {
 				$months[$currentMonth] = 1;
 			}
 		}
-		$mostFrequentMonth;
-		$mostFrequentMonthValue = 0;
-		foreach ($months as $key => $value) {
-			if($value > $mostFrequentMonthValue){
-				$mostFrequentMonthValue = $value;
-				$mostFrequentMonth = $key;
-			}
-		}
-		return $mostFrequentMonth;
+		var_dump($months);
+		asort($months);
+		end($months);
+		return key($months);
+		// $mostFrequentMonth;
+		// $mostFrequentMonthValue = 0;
+		// foreach ($months as $key => $value) {
+		// 	if($value > $mostFrequentMonthValue){
+		// 		$mostFrequentMonthValue = $value;
+		// 		$mostFrequentMonth = $key;
+		// 	}
+		// }
+		// return $mostFrequentMonth;
 	}
 
 	function helpSort($a, $b){
