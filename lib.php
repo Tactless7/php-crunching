@@ -143,4 +143,22 @@
 		return $mostFrequentMonth;
 	}
 
+	function cheaperMovies($array){
+		$limitedArray = [];
+		foreach ($array as $key => $value) {
+			$name = $array[$key]['im:name']['label'];
+			$limitedArray[$name] = Array() floatval($value['im:price']['attributes']['amount']);
+		}
+		asort($limitedArray);
+		var_dump($limitedArray);
+		foreach ($limitedArray as $key => $value) {
+			if($key < 10){
+				echo '<li>'. $key .'</li>';
+			}
+			else {
+				return;
+			}
+		}
+	}
+
  ?>
